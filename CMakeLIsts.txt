@@ -1,0 +1,68 @@
+cmake_minimum_required(VERSION 3.24.1)
+
+# Version Info
+set(LIVERMORE_VERSION_MAJOR 0)
+set(LIVERMORE_VERSION_MINOR 0)
+set(LIVERMORE_VERSION_PATCH 1)
+set(LIVERMORE_VERSION ${LIVERMORE_VERSION_MAJOR}.${LIVERMORE_VERSION_MINOR}.${LIVERMORE_VERSION_PATCH})
+
+# Project Info
+set(PACKAGE_NAME      "livermore")
+set(PACKAGE_VERSION   "${LIVERMORE_VERSION}-dev")
+set(PACKAGE_TARNAME   "${PACKAGE_NAME}-${PACKAGE_VERSION}")
+set(PACKAGE_BUGREPORT "https://github.com/hanjingo/livermore/issues")
+
+# Cmake module path
+set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
+
+# Output path
+if (UNIX)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
+    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} -g")
+
+    set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_BUILD_TYPE})
+    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_BUILD_TYPE})
+endif()
+if (WIN32)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /utf-8")
+    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS}")
+
+    set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_BUILD_TYPE})
+    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_BUILD_TYPE})
+endif()
+
+# Environment require
+if (NOT DEFINED CMAKE_CXX_STANDARD)
+    set(CMAKE_CXX_STANDARD 11)
+elseif (CMAKE_CXX_STANDARD LESS 11)
+    message(FATAL_ERROR "Please specify CMAKE_CXX_STANDARD of 11+")
+endif()
+
+# Avoid use of compiler language extensions, i.e. -std=c++11 not -std=gnu++11
+if (NOT DEFINED CMAKE_CXX_EXTENSIONS)
+    set(CMAKE_CXX_EXTENSIONS FALSE)
+endif()
+
+# Build Type
+if (NOT CMAKE_BUILD_TYPE OR CMAKE_BUILD_TYPE STREQUAL "")
+    set(CMAKE_BUILD_TYPE "Release" CACHE 
+        STRING "Build type config" FORCE)
+endif()
+
+project(${PACKAGE_NAME} LANGUAGES CXX DESCRIPTION "The livermore Project")
+
+# Options
+option(BUILD_TESTS "Build test" ON)
+option(BUILD_BENCHMARK "Build benchmark" ON)
+option(USE_BOOST "Use boost component" ON)
+option(USE_SPDLOG "Use spdlog" ON)
+
+if (BUILD_TESTS)
+    add_subdirectory(tests)
+endif()
+
+if (BUILD_BENCHMARK)
+    add_subdirectory(bench)
+endif()
+
+add_subdirectory(deps)
