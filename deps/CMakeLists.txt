@@ -28,3 +28,21 @@ if (USE_SPDLOG)
         find_package(FetchSpdlog REQUIRED)
     endif()
 endif()
+
+if (USE_LIBZMQ)
+    if (NOT DEFINED LIBZMQ_VERSION)
+        set(LIBZMQ_VERSION 4.3.4)
+    endif()
+
+    if (NOT DEFINED LIBZMQ_FETCH_WAY)
+        set(LIBZMQ_FETCH_WAY https)
+    endif()
+
+    if (NOT DEFINED LIBZMQ_ROOT)
+        set(LIBZMQ_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/libzmq)
+    endif()
+
+    if (NOT EXISTS ${LIBZMQ_ROOT})
+        find_package(FetchLibzmq REQUIRED)
+    endif()
+endif()

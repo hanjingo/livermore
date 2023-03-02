@@ -54,8 +54,9 @@ project(${PACKAGE_NAME} LANGUAGES CXX DESCRIPTION "The livermore Project")
 # Options
 option(BUILD_TESTS "Build test" ON)
 option(BUILD_BENCHMARK "Build benchmark" ON)
-option(USE_BOOST "Use boost component" ON)
-option(USE_SPDLOG "Use spdlog" ON)
+option(USE_BOOST "Use boost component" OFF)
+option(USE_SPDLOG "Use spdlog" OFF)
+option(USE_LIBZMQ "Use libzmq" ON)
 
 if (BUILD_TESTS)
     add_subdirectory(tests)
