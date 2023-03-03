@@ -1,0 +1,4 @@
+[submodule "libcpp"]
+	path = src/libcpp
+	url = git@github.com:hanjingo/libcpp.git
+	branch = main
