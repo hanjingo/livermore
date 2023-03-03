@@ -46,3 +46,15 @@ if (USE_LIBZMQ)
         find_package(FetchLibzmq REQUIRED)
     endif()
 endif()
+
+if (USE_XTP)
+    if (NOT DEFINED XTP_VERSION)
+        set(XTP_VERSION 2.2.33.5)
+    endif()
+
+    if (NOT DEFINED XTP_ROOT)
+        set(XTP_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/xtp)
+    endif()
+
+    find_package(FetchXtp REQUIRED)
+endif()

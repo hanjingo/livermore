@@ -51,12 +51,25 @@ endif()
 
 project(${PACKAGE_NAME} LANGUAGES CXX DESCRIPTION "The livermore Project")
 
-# Options
-option(BUILD_TESTS "Build test" ON)
-option(BUILD_BENCHMARK "Build benchmark" ON)
+# Options--build
+option(BUILD_EXAMPLES "Build examples" ON)
+option(BUILD_TESTS "Build test" OFF)
+option(BUILD_BENCHMARK "Build benchmark" OFF)
+# Option--3rd Project
 option(USE_BOOST "Use boost component" OFF)
 option(USE_SPDLOG "Use spdlog" OFF)
 option(USE_LIBZMQ "Use libzmq" OFF)
+# Option--service
+option(BUILD_QUOTE "Build quote service" OFF)
+# Option--broker
+option(USE_XTP "Use xtp broker service" ON)
+
+add_subdirectory(deps)
+add_subdirectory(src)
+
+if (BUILD_EXAMPLES)
+    add_subdirectory(examples)
+endif()
 
 if (BUILD_TESTS)
     add_subdirectory(tests)
@@ -65,6 +78,3 @@ endif()
 if (BUILD_BENCHMARK)
     add_subdirectory(bench)
 endif()
-
-add_subdirectory(deps)
-add_subdirectory(src)

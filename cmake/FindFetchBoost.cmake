@@ -273,7 +273,7 @@ if (${FETCH_BOOST_PASS})
 
     execute_process(COMMAND ${BUILD_CMD} ${ARGS} ${OPTIONS}
                     WORKING_DIRECTORY ${BOOST_ROOT})
-
-    set(Boost_INCLUDE_DIRS ${BOOST_ROOT} CACHE PATH "boost include dir")
-    set(Boost_LIBRARY_DIRS ${BOOST_LIB_PATH}/lib CACHE PATH "boost library dir")
 endif()
+
+set(Boost_INCLUDE_DIRS ${BOOST_ROOT} CACHE PATH "boost include dir")
+set(Boost_LIBRARY_DIRS ${BOOST_LIB_PATH}/lib CACHE PATH "boost library dir")
