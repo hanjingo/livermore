@@ -13,7 +13,7 @@ set(PACKAGE_TARNAME   "${PACKAGE_NAME}-${PACKAGE_VERSION}")
 set(PACKAGE_BUGREPORT "https://github.com/hanjingo/livermore/issues")
 
 # Cmake module path
-set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
+set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmakes" ${CMAKE_MODULE_PATH})
 
 # Output path
 if (UNIX)
@@ -22,6 +22,7 @@ if (UNIX)
 
     set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE})
     set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE})
+    set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE})
 endif()
 if (WIN32)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /utf-8")
@@ -29,6 +30,7 @@ if (WIN32)
 
     set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE})
     set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE})
+    set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE})
 endif()
 
 # Environment require
@@ -51,18 +53,21 @@ endif()
 
 project(${PACKAGE_NAME} LANGUAGES CXX DESCRIPTION "The livermore Project")
 
+# Options--library
+option(BUILD_SHARED "Build shared object" ON)
+option(BUILD_STATIC "Build static object" ON)
 # Options--build
 option(BUILD_EXAMPLES "Build examples" ON)
 option(BUILD_TESTS "Build test" OFF)
 option(BUILD_BENCHMARK "Build benchmark" OFF)
 # Option--3rd Project
-option(USE_BOOST "Use boost component" OFF)
-option(USE_SPDLOG "Use spdlog" OFF)
-option(USE_LIBZMQ "Use libzmq" OFF)
+option(USE_BOOST "Use boost component" ON)
+option(USE_SPDLOG "Use spdlog" ON)
+option(USE_LIBZMQ "Use libzmq" ON)
+# Option--broker
+option(USE_XTP "Use xtp broker service" OFF)
 # Option--service
 option(BUILD_QUOTE "Build quote service" OFF)
-# Option--broker
-option(USE_XTP "Use xtp broker service" ON)
 
 add_subdirectory(deps)
 add_subdirectory(src)

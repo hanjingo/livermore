@@ -6,3 +6,7 @@
 	path = src/broker
 	url = git@github.com:hanjingo/broker.git
 	branch = main
+[submodule "cmakes"]
+	path = cmakes
+	url = git@github.com:hanjingo/cmakes.git
+	branch = main

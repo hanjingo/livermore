@@ -10,9 +10,7 @@ if (USE_BOOST)
         set(BOOST_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/boost)
     endif()
 
-    if (NOT EXISTS ${BOOST_ROOT})
-        find_package(FetchBoost REQUIRED)
-    endif()
+    find_package(FetchBoost REQUIRED)
 endif()
 
 if (USE_SPDLOG)
@@ -24,9 +22,7 @@ if (USE_SPDLOG)
         set(SPDLOG_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/spdlog)
     endif()
 
-    if (NOT EXISTS ${SPDLOG_ROOT})
-        find_package(FetchSpdlog REQUIRED)
-    endif()
+    find_package(FetchSpdlog REQUIRED)
 endif()
 
 if (USE_LIBZMQ)
@@ -42,9 +38,7 @@ if (USE_LIBZMQ)
         set(LIBZMQ_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/libzmq)
     endif()
 
-    if (NOT EXISTS ${LIBZMQ_ROOT})
-        find_package(FetchLibzmq REQUIRED)
-    endif()
+    find_package(FetchLibzmq REQUIRED)
 endif()
 
 if (USE_XTP)
