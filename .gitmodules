@@ -1,0 +1,8 @@
+[submodule "livermore-broker"]
+	path = livermore-broker
+	url = git@github.com:hanjingo/livermore-broker.git
+	branch = main
+[submodule "livermore-trader"]
+	path = livermore-trader
+	url = git@github.com:hanjingo/livermore-trader.git
+	branch = main
