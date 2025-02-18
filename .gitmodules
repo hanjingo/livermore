@@ -6,3 +6,7 @@
 	path = livermore-trader
 	url = git@github.com:hanjingo/livermore-trader.git
 	branch = main
+[submodule "livermore-whitepaper"]
+	path = livermore-whitepaper
+	url = git@github.com:hanjingo/livermore-whitepaper.git
+	branch = main
