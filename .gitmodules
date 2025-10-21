@@ -10,3 +10,7 @@
 	path = livermore-whitepaper
 	url = git@github.com:hanjingo/livermore-whitepaper.git
 	branch = main
+[submodule "livermore-crypto"]
+	path = livermore-crypto
+	url = git@github.com:hanjingo/livermore-crypto.git
+	branch = main
