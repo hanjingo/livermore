@@ -14,3 +14,7 @@
 	path = livermore-crypto
 	url = git@github.com:hanjingo/livermore-crypto.git
 	branch = main
+[submodule "livermore-ctp"]
+	path = livermore-ctp
+	url = git@github.com:hanjingo/livermore-ctp.git
+	branch = main
