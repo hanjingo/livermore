@@ -18,3 +18,19 @@
 	path = livermore-ctp
 	url = git@github.com:hanjingo/livermore-ctp.git
 	branch = main
+[submodule "livermore-xtp"]
+	path = livermore-xtp
+	url = git@github.com:hanjingo/livermore-xtp.git
+	branch = main
+[submodule "livermore-tx"]
+	path = livermore-tx
+	url = git@github.com:hanjingo/livermore-tx.git
+	branch = main
+[submodule "livermore-broadcast"]
+	path = livermore-broadcast
+	url = git@github.com:hanjingo/livermore-broadcast.git
+	branch = main
+[submodule "livermore-data-center"]
+	path = livermore-data-center
+	url = git@github.com:hanjingo/livermore-data-center.git
+	branch = main
