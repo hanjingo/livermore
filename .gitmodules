@@ -34,3 +34,11 @@
 	path = livermore-data-center
 	url = git@github.com:hanjingo/livermore-data-center.git
 	branch = main
+[submodule "livermore-quote"]
+	path = livermore-quote
+	url = git@github.com:hanjingo/livermore-quote.git
+	branch = main
+[submodule "livermore-binance"]
+	path = livermore-binance
+	url = git@github.com:hanjingo/livermore-binance.git
+	branch = main
